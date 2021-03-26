@@ -33,6 +33,7 @@ describe('users endpoints', () => {
     })
     it('adds the new user to the database', async () => {
       const userToAdd = {username: 'trenten', password: '1234'}
+      //eslint-disable-next-line
       const res = await request(server)
       .post('/register')
       .send(userToAdd)

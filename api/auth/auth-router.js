@@ -5,7 +5,7 @@ const bcryptjs = require('bcryptjs')
 const Users = require('../auth/auth-model');
 const { checkBodyExists, checkUsernameExists, checkUsernameFree } = require('./auth-middleware');
 
-
+//eslint-disable-next-line
 router.post('/register',checkBodyExists, checkUsernameFree, async (req, res, next) => {
   let credentials = req.body
 

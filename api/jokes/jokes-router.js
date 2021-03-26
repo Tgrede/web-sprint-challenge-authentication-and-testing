@@ -2,7 +2,8 @@
 const router = require('express').Router();
 const jokes = require('./jokes-data');
 
-router.get('/', (req, res) => {
+//eslint-disable-next-line
+router.get('/', (req, res, next) => {
   res.status(200).json(jokes);
 });
 
