@@ -52,7 +52,7 @@ router.post('/login', checkBodyExists, checkUsernameExists, async (req, res, nex
 
 
     const user = await Users.findBy({username: username}).first() 
-    console.log(user)
+    
     if(user && bcryptjs.compareSync(password, user.password)) {
       const token = buildToken(user)
       res.status(200).json({message: `welcome, ${user.username}`, token})

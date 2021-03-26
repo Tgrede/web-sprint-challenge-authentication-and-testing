@@ -13,7 +13,7 @@ beforeEach(async () => {
   await db.seed.run()
 })
 afterAll(async () => {
-  await db.destroy() 
+  await db.destroy()  
 })
 
 test('sanity', () => {
