@@ -13,8 +13,6 @@ router.post('/register',checkBodyExists, checkUsernameFree, async (req, res, nex
 
   credentials = {...credentials, password: hash}
 
-  console.log(credentials)
-
   let newUser = await Users.add(credentials)
   newUser = await Users.findBy(credentials)
   
