@@ -47,7 +47,25 @@ router.post('/register',checkBodyExists, checkUsernameFree, async (req, res, nex
   */
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', checkBodyExists, checkUsernameExists, async (req, res, next) => {
+
+  try{
+    let {username, password} = req.body
+
+
+    const user = await Users.findBy({username: username}).first() 
+    console.log(user)
+    if(user && bcryptjs.compareSync(password, user.password)) {
+      const token = buildToken(user)
+      res.status(200).json({message: `welcome, ${user.username}`, token})
+    } else {
+      res.status(401).json({message: 'invalid credentials'})
+    }
+  } catch(err){
+    next(err)
+  }
+  
+
   // res.end('implement login, please!');
   /*
     IMPLEMENT
